@@ -32,6 +32,9 @@ module.exports = {
         },
       ],
     },
+    googleAnalytics: {
+      trackingID: 'UA-166626980-1',
+    },
     footer: {
       style: 'dark',
       links: [
