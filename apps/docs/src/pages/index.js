@@ -64,6 +64,10 @@ function Home() {
     >
       <header className={classnames('hero hero--primary', styles.heroBanner)}>
         <div className="container">
+          <img
+            src={useBaseUrl('img/logo.png')}
+            className={styles.featureImage}
+          />
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className={styles.buttons}>
@@ -72,7 +76,7 @@ function Home() {
                 'button button--outline button--secondary button--lg',
                 styles.getStarted
               )}
-              to={useBaseUrl('docs/cli')}
+              to={useBaseUrl('docs/cli/getting-started')}
             >
               Get Started
             </Link>

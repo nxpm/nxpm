@@ -8,6 +8,30 @@ The `release` command helps versioning, releasing packages to GitHub and publish
 
 Before it does this, it will validate the workspace and can fix some inconsistencies that might exist in your packages.
 
+:::important
+The `release` command does **not** build your packages.
+
+In order to build all your packages you can run:
+
+```shell script
+yarn nx run-many --target build --all
+```
+
+:::
+
+## Validation
+
+At this moment the `release` command is very opinionated about what and how it publishes.
+
+- It publishes all the `publishable` packages defined in the workspace file.
+- It requires all packages to have their `name` start with the `npmScope` defined in `nx.json`.
+- It requires all packages to have a `license` field.
+- It requires all packages to have their `version` set to `0.0.0-development`.
+
+This is all subject to change, ideally this tool should be flexible enough to fit all common use cases for releasing to npm.
+
+Feel free to share [thoughts](https://github.com/nxpm/nxpm-cli/issues) or [code](https://github.com/nxpm/nxpm-cli/pulls).
+
 ## Dry Run
 
 Because you probably don't want to risk publishing broken packages to npm, it's smart to run the release command in dry-run mode:
@@ -20,25 +44,21 @@ This will run the validations and tell you if it's able to release the package o
 
 The cli has a `--fix` option that will fix the issues for you.
 
+## Fix
+
+The `--fix` flag will try to correct any validations errors it finds.
+
+```shell script
+nxpm release 1.0.0 --dry-run --fix
+```
+
 ## Release
 
 Once you are happy with the suggested release plan, you can run it:
 
 ```shell script
-nxpm release 1.0.0 --dry-run
+nxpm release 1.0.0
 ```
-
-:::important
-
-The `release` command does **not** build your packages.
-
-In order to build all your packages you can run:
-
-```shell script
-yarn nx run-many --target build --all
-```
-
-:::
 
 ## Options
 

@@ -1,6 +1,6 @@
 module.exports = {
   title: 'nxpm',
-  tagline: 'Toolkit for Nx Workspace',
+  tagline: 'A toolkit for Nx Workspace',
   url: 'https://nxpm.github.io',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
