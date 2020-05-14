@@ -55,7 +55,7 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'Discord',
+              label: 'Kikstart Discord',
               href: 'https://discord.gg/RTgCpDd',
             },
             {

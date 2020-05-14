@@ -67,6 +67,8 @@ function Home() {
           <img
             src={useBaseUrl('img/logo.png')}
             className={styles.featureImage}
+            alt="nxpm logo made by Freepik from www.flaticon.com"
+            title="pm does *not* stand for pig meat..."
           />
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
