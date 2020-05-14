@@ -59,8 +59,8 @@ function Home() {
   const { siteConfig = {} } = context;
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
+      title={`${siteConfig.title} - ${siteConfig.tagline}`}
+      description="Tools to make the world-class [nx workspace](https://github.com/nrwl/nx) even more amazing!"
     >
       <header className={classnames('hero hero--primary', styles.heroBanner)}>
         <div className="container">
