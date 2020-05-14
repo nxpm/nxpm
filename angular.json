@@ -23,19 +23,7 @@
           "options": {
             "commands": [
               {
-                "command": "cd dist/docs"
-              },
-              {
-                "command": "git init"
-              },
-              {
-                "command": "git commit -am 'feat: publish site'"
-              },
-              {
-                "command": "git remote add origin git@github.com:nxpm/nxpm.github.io.git"
-              },
-              {
-                "command": "git push --force"
+                "command": "cd dist/docs && git init && git add . && git commit -m 'feat: publish site' && git remote add origin git@github.com:nxpm/nxpm.github.io.git && git push --set-upstream origin master --force"
               }
             ],
             "parallel": false
