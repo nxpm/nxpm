@@ -39,8 +39,12 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'nxpm cli',
-              to: 'docs/cli',
+              label: 'Getting Started',
+              to: 'docs/cli/getting-started',
+            },
+            {
+              label: 'Releasing Packages',
+              to: 'docs/guides/releasing-packages',
             },
           ],
         },
@@ -51,6 +55,11 @@ module.exports = {
               label: 'Discord',
               href: 'https://discord.gg/RTgCpDd',
             },
+            {
+              label: 'Nrwl Slack',
+              href:
+                'https://join.slack.com/t/nrwlcommunity/shared_invite/zt-9oqftflu-gcpO8xpMCdBhxUWmtuwr~g',
+            },
           ],
         },
         {
@@ -59,6 +68,10 @@ module.exports = {
             {
               label: 'GitHub',
               href: 'https://github.com/nxpm',
+            },
+            {
+              label: 'Twitter',
+              href: 'https://twitter.com/beeman_nl',
             },
           ],
         },
