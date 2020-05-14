@@ -1,7 +1,7 @@
 {
   "npmScope": "nxpm",
   "implicitDependencies": {
-    "workspace.json": "*",
+    "angular.json": "*",
     "package.json": {
       "dependencies": "*",
       "devDependencies": "*"
