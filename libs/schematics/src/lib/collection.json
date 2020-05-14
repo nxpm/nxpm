@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "schematics-library": {
+      "description": "Create a library to publish schematics",
+      "factory": "./schematics-library/schematics-library",
+      "schema": "./schematics-library/schema.json"
+    }
+  }
+}

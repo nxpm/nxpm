@@ -30,6 +30,57 @@
           }
         }
       }
+    },
+    "schematics": {
+      "root": "libs/schematics",
+      "sourceRoot": "libs/schematics/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/schematics/tsconfig.lib.json",
+              "libs/schematics/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/schematics/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/schematics/jest.config.js",
+            "tsConfig": "libs/schematics/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/schematics",
+            "tsConfig": "libs/schematics/tsconfig.lib.json",
+            "packageJson": "libs/schematics/package.json",
+            "main": "libs/schematics/src/index.ts",
+            "assets": [
+              "libs/schematics/*.md",
+              {
+                "glob": "**/*.json",
+                "input": "libs/schematics/src/lib",
+                "output": "./lib/"
+              },
+              {
+                "glob": "**/*.*__tmpl__",
+                "input": "libs/schematics/src/lib",
+                "output": "./lib/"
+              }
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

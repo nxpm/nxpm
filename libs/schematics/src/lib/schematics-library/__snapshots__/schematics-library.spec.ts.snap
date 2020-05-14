@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lib schematics should create collection.json 1`] = `
+Object {
+  "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": Object {
+    "schematics-library": Object {
+      "description": "Hello world schematic",
+      "factory": "./hello-world/hello-world",
+    },
+  },
+}
+`;

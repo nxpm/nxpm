@@ -1,0 +1,26 @@
+{
+  "name": "@nxpm/schematics",
+  "version": "0.0.0-development",
+  "license": "MIT",
+  "schematics": "./lib/collection.json",
+  "author": {
+    "name": "Bram Borggreve",
+    "email": "beeman@beeman.nl",
+    "url": "https://github.com/beeman"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nxpm/nxpm.git"
+  },
+  "dependencies": {
+    "@angular-devkit/core": "^9.1.0",
+    "@angular-devkit/schematics": "^9.1.0",
+    "@nrwl/node": "^9.2.4",
+    "typescript": "~3.8.2"
+  },
+  "devDependencies": {}
+}

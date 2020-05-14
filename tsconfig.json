@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nxpm/schematics": ["libs/schematics/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
