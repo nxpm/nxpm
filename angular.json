@@ -1,6 +1,26 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "docs": {
+      "projectType": "application",
+      "root": "apps/docs",
+      "sourceRoot": "apps/docs/src",
+      "architect": {
+        "docusaurus": {
+          "builder": "@nx-plus/docusaurus:docusaurus",
+          "options": {
+            "port": 4280
+          }
+        },
+        "build-docusaurus": {
+          "builder": "@nx-plus/docusaurus:build-docusaurus",
+          "options": {
+            "outputPath": "dist/docusaurus/docs"
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
   },
