@@ -6,16 +6,16 @@
       "root": "apps/docs",
       "sourceRoot": "apps/docs/src",
       "architect": {
-        "docusaurus": {
+        "serve": {
           "builder": "@nx-plus/docusaurus:docusaurus",
           "options": {
             "port": 4280
           }
         },
-        "build-docusaurus": {
+        "build": {
           "builder": "@nx-plus/docusaurus:build-docusaurus",
           "options": {
-            "outputPath": "dist/docusaurus/docs"
+            "outputPath": "docs"
           }
         }
       }

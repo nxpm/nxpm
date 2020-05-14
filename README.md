@@ -4,6 +4,14 @@
 
 Monorepo for [nxpm](https://github.com/nxpm/nxpm-cli) docs and tools.
 
+## Docs:
+
+The docs are written in Docusaurus. The development server listens on port http://localhost:4280/
+
+```shell script
+nx serve docs
+```
+
 # Credits
 
 - Logo made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/)
