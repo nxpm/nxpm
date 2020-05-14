@@ -15,7 +15,30 @@
         "build": {
           "builder": "@nx-plus/docusaurus:build-docusaurus",
           "options": {
-            "outputPath": "docs"
+            "outputPath": "dist/docs"
+          }
+        },
+        "publish": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd dist/docs"
+              },
+              {
+                "command": "git init"
+              },
+              {
+                "command": "git commit -am 'feat: publish site'"
+              },
+              {
+                "command": "git remote add origin git@github.com:nxpm/nxpm.github.io.git"
+              },
+              {
+                "command": "git push --force"
+              }
+            ],
+            "parallel": false
           }
         }
       }
