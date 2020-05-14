@@ -48,4 +48,22 @@ yarn build schematics
 ```shell script
 cd dist/libs/schematics
 npm publish
+
+
+npm notice
+npm notice 📦  @nxpm-playground/schematics@1.1.1
+npm notice === Tarball Contents ===
+npm notice ...
+npm notice === Tarball Details ===
+npm notice name:          @nxpm-playground/schematics
+npm notice version:       1.1.1
++ @nxpm-playground/schematics@1.1.1
+```
+
+# Using your schematics
+
+```shell script
+# In some Nx Workspace or Angular CLI project...
+yarn add -D @nxpm-playground/schematics
+nx g @nxpm-playground/schematics:hello-world
 ```

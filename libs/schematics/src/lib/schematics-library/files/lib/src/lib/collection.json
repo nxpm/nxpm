@@ -1,7 +1,7 @@
 {
   "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "schematics-library": {
+    "hello-world": {
       "description": "Hello world schematic",
       "factory": "./hello-world/hello-world"
     }
