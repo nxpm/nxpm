@@ -66,4 +66,5 @@ npm notice version:       1.1.1
 # In some Nx Workspace or Angular CLI project...
 yarn add -D @nxpm-playground/schematics
 nx g @nxpm-playground/schematics:hello-world
+CREATE hello (5 bytes)
 ```
