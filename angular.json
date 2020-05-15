@@ -44,10 +44,7 @@
               "libs/schematics/tsconfig.lib.json",
               "libs/schematics/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/schematics/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/schematics/**"]
           }
         },
         "test": {
@@ -78,6 +75,108 @@
                 "output": "./lib/"
               }
             ]
+          }
+        }
+      }
+    },
+    "cli": {
+      "root": "libs/cli",
+      "sourceRoot": "libs/cli/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/cli/.eslintrc",
+            "tsConfig": [
+              "libs/cli/tsconfig.lib.json",
+              "libs/cli/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/cli/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/cli/jest.config.js",
+            "tsConfig": "libs/cli/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "postbuild": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx oclif-dev manifest ./dist/libs/cli"
+              },
+              {
+                "command": "cd ./dist/libs/cli && ../../../node_modules/.bin/oclif-dev readme"
+              },
+              {
+                "command": "cp ./dist/libs/cli/oclif.manifest.json ./libs/cli/ && cp ./dist/libs/cli/README.md ./libs/cli/"
+              }
+            ],
+            "parallel": false
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "sourceMap": false,
+            "outputPath": "dist/libs/cli",
+            "tsConfig": "libs/cli/tsconfig.lib.json",
+            "packageJson": "libs/cli/package.json",
+            "main": "libs/cli/src/index.ts",
+            "assets": [
+              "libs/cli/*.md",
+              "libs/cli/oclif.manifest.json",
+              {
+                "glob": "*",
+                "input": "libs/cli/src/bin",
+                "output": "./bin/"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "cli-utils": {
+      "root": "libs/cli-utils",
+      "sourceRoot": "libs/cli-utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/cli-utils/.eslintrc",
+            "tsConfig": [
+              "libs/cli-utils/tsconfig.lib.json",
+              "libs/cli-utils/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/cli-utils/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/cli-utils/jest.config.js",
+            "tsConfig": "libs/cli-utils/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/cli-utils",
+            "tsConfig": "libs/cli-utils/tsconfig.lib.json",
+            "packageJson": "libs/cli-utils/package.json",
+            "main": "libs/cli-utils/src/index.ts",
+            "assets": ["libs/cli-utils/*.md"]
           }
         }
       }
