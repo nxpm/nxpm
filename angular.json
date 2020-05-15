@@ -44,10 +44,7 @@
               "libs/schematics/tsconfig.lib.json",
               "libs/schematics/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/schematics/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/schematics/**"]
           }
         },
         "test": {
@@ -78,6 +75,44 @@
                 "output": "./lib/"
               }
             ]
+          }
+        }
+      }
+    },
+    "cli": {
+      "root": "libs/cli",
+      "sourceRoot": "libs/cli/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/cli/.eslintrc",
+            "tsConfig": [
+              "libs/cli/tsconfig.lib.json",
+              "libs/cli/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/cli/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/cli/jest.config.js",
+            "tsConfig": "libs/cli/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/cli",
+            "tsConfig": "libs/cli/tsconfig.lib.json",
+            "packageJson": "libs/cli/package.json",
+            "main": "libs/cli/src/index.ts",
+            "assets": ["libs/cli/*.md"]
           }
         }
       }
