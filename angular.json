@@ -142,6 +142,44 @@
           }
         }
       }
+    },
+    "cli-utils": {
+      "root": "libs/cli-utils",
+      "sourceRoot": "libs/cli-utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/cli-utils/.eslintrc",
+            "tsConfig": [
+              "libs/cli-utils/tsconfig.lib.json",
+              "libs/cli-utils/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/cli-utils/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/cli-utils/jest.config.js",
+            "tsConfig": "libs/cli-utils/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/cli-utils",
+            "tsConfig": "libs/cli-utils/tsconfig.lib.json",
+            "packageJson": "libs/cli-utils/package.json",
+            "main": "libs/cli-utils/src/index.ts",
+            "assets": ["libs/cli-utils/*.md"]
+          }
+        }
+      }
     }
   },
   "cli": {

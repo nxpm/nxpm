@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@nxpm/schematics": ["libs/schematics/src/index.ts"],
-      "@nxpm/cli": ["libs/cli/src/index.ts"]
+      "@nxpm/cli": ["libs/cli/src/index.ts"],
+      "@nxpm/cli-utils": ["libs/cli-utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

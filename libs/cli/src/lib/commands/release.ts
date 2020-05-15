@@ -1,10 +1,10 @@
-import { Command, flags } from '@oclif/command'
-import * as inquirer from 'inquirer'
-import { release } from '../lib/release/release'
-import { parseVersion } from '../utils/parse-version'
+import { Command, flags } from '@oclif/command';
+import * as inquirer from 'inquirer';
+import { release } from '../lib/release/release';
+import { parseVersion } from '@nxpm/cli-utils';
 
 export default class Release extends Command {
-  static description = 'Release publishable packages in an Nx Workspace'
+  static description = 'Release publishable packages in an Nx Workspace';
 
   static flags = {
     cwd: flags.string({
@@ -18,20 +18,27 @@ export default class Release extends Command {
       description: 'Allow publishing Angular packages built for Ivy',
       default: true,
     }),
-    'dry-run': flags.boolean({ char: 'd', description: "Dry run, don't make permanent changes" }),
-    fix: flags.boolean({ char: 'f', description: 'Automatically fix known issues' }),
-  }
+    'dry-run': flags.boolean({
+      char: 'd',
+      description: "Dry run, don't make permanent changes",
+    }),
+    fix: flags.boolean({
+      char: 'f',
+      description: 'Automatically fix known issues',
+    }),
+  };
 
   static args = [
     {
       name: 'version',
-      description: 'The version you want to release in semver format (eg: 1.2.3-beta.4)',
+      description:
+        'The version you want to release in semver format (eg: 1.2.3-beta.4)',
       required: false,
     },
-  ]
+  ];
 
   async run() {
-    const { args, flags } = this.parse(Release)
+    const { args, flags } = this.parse(Release);
 
     if (!args.version) {
       const response = await inquirer.prompt([
@@ -41,13 +48,13 @@ export default class Release extends Command {
           message: 'What version do you want to release?',
           validate(version: string): boolean | string {
             if (!parseVersion(version).isValid) {
-              return 'Please use a valid semver version (eg: 1.2.3-beta.4)'
+              return 'Please use a valid semver version (eg: 1.2.3-beta.4)';
             }
-            return true
+            return true;
           },
         },
-      ])
-      args.version = response.version
+      ]);
+      args.version = response.version;
     }
 
     await release({
@@ -56,6 +63,6 @@ export default class Release extends Command {
       dryRun: flags['dry-run'],
       fix: flags.fix,
       version: args.version,
-    })
+    });
   }
 }
