@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
+    "ng": "nx",
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
@@ -24,7 +24,8 @@
     "update": "ng update @nrwl/workspace",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "postinstall": "ln -sf ./nx ./node_modules/.bin/ng"
   },
   "private": true,
   "dependencies": {},
@@ -35,6 +36,7 @@
     "@docusaurus/preset-classic": "^2.0.0-alpha.50",
     "@nrwl/jest": "9.2.4",
     "@nrwl/node": "^9.2.4",
+    "@nrwl/nx-cloud": "^9.2.1",
     "@nrwl/workspace": "9.2.4",
     "@nx-plus/docusaurus": "^0.0.4",
     "@types/jest": "25.1.4",
