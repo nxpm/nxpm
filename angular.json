@@ -108,11 +108,19 @@
         "build": {
           "builder": "@nrwl/node:package",
           "options": {
+            "sourceMap": false,
             "outputPath": "dist/libs/cli",
             "tsConfig": "libs/cli/tsconfig.lib.json",
             "packageJson": "libs/cli/package.json",
             "main": "libs/cli/src/index.ts",
-            "assets": ["libs/cli/*.md"]
+            "assets": [
+              "libs/cli/*.md",
+              {
+                "glob": "*",
+                "input": "libs/cli/src/bin",
+                "output": "./bin/"
+              }
+            ]
           }
         }
       }
