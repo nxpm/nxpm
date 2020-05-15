@@ -51,7 +51,7 @@
     "@nrwl/nx-cloud": "^9.2.1",
     "@nrwl/workspace": "9.2.4",
     "@nx-plus/docusaurus": "^0.0.4",
-    "@oclif/dev-cli": "^1",
+    "@oclif/dev-cli": "^1.22.2",
     "@oclif/test": "^1",
     "@types/chai": "^4",
     "@types/inquirer": "^6.5.0",

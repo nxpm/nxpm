@@ -105,6 +105,23 @@
             "passWithNoTests": true
           }
         },
+        "postbuild": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx oclif-dev manifest ./dist/libs/cli"
+              },
+              {
+                "command": "cd ./dist/libs/cli && ../../../node_modules/.bin/oclif-dev readme"
+              },
+              {
+                "command": "cp ./dist/libs/cli/oclif.manifest.json ./libs/cli/ && cp ./dist/libs/cli/README.md ./libs/cli/"
+              }
+            ],
+            "parallel": false
+          }
+        },
         "build": {
           "builder": "@nrwl/node:package",
           "options": {
@@ -115,6 +132,7 @@
             "main": "libs/cli/src/index.ts",
             "assets": [
               "libs/cli/*.md",
+              "libs/cli/oclif.manifest.json",
               {
                 "glob": "*",
                 "input": "libs/cli/src/bin",
