@@ -30,6 +30,7 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
+    "@angular-devkit/build-angular": "^0.901.6",
     "@angular/cli": "9.1.0",
     "@docusaurus/core": "^2.0.0-alpha.50",
     "@docusaurus/plugin-google-analytics": "^2.0.0-alpha.37",
