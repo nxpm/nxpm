@@ -4,7 +4,7 @@ exports[`lib schematics should create collection.json 1`] = `
 Object {
   "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": Object {
-    "schematics-library": Object {
+    "hello-world": Object {
       "description": "Hello world schematic",
       "factory": "./hello-world/hello-world",
     },
