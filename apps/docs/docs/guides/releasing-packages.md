@@ -4,11 +4,11 @@ title: Releasing packages
 sidebar_label: Releasing packages
 ---
 
-In this guide we will create a new workspace, add some packages and release them to npm.
+In this guide we create a new workspace, add some packages and release them to npm.
 
-The workspace name we will use is `nxpm-playground`.
+The workspace name we use is `nxpm-playground`.
 
-For this guide to work, the workspace name should be the name of the npm scope we will use to publish the packages. If you don't have a npm org you can [create one](https://www.npmjs.com/org/create) for free.
+For this guide to work, the workspace name should be the name of the npm scope we use to publish the packages. If you don't have a npm org you can [create one](https://www.npmjs.com/org/create) for free.
 
 ## Creating a new workspace
 

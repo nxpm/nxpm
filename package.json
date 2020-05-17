@@ -28,7 +28,9 @@
     "postinstall": "ln -sf ./nx ./node_modules/.bin/ng"
   },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "babel-loader": "^7.1.5"
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.901.6",
     "@angular/cli": "9.1.0",
