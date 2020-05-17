@@ -28,9 +28,7 @@
     "postinstall": "ln -sf ./nx ./node_modules/.bin/ng"
   },
   "private": true,
-  "dependencies": {
-    "babel-loader": "^7.1.5"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.901.6",
     "@angular/cli": "9.1.0",
@@ -42,8 +40,10 @@
     "@nrwl/nx-cloud": "^9.2.1",
     "@nrwl/workspace": "9.2.4",
     "@nx-plus/docusaurus": "^0.0.4",
+    "@nxpm/schematics": "^1.0.2",
     "@types/jest": "25.1.4",
     "@types/node": "~8.9.4",
+    "babel-loader": "7",
     "classnames": "^2.2.6",
     "dotenv": "6.2.0",
     "eslint": "6.8.0",
