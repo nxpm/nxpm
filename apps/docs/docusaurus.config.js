@@ -1,7 +1,7 @@
 module.exports = {
   title: 'nxpm',
   tagline: 'A toolkit for Nx Workspace',
-  url: 'https://nxpm.github.io',
+  url: 'https://nxpm.dev',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'nxpm', // Usually your GitHub org/user name.
