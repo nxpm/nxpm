@@ -23,6 +23,9 @@
           "options": {
             "commands": [
               {
+                "command": "yarn nx build docs"
+              },
+              {
                 "command": "cd dist/docs && git init && git add . && git commit -m 'feat: publish site' && git remote add origin git@github.com:nxpm/nxpm.github.io.git && git push --set-upstream origin master --force"
               }
             ],
@@ -44,10 +47,7 @@
               "libs/schematics/tsconfig.lib.json",
               "libs/schematics/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/schematics/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/schematics/**"]
           }
         },
         "test": {
