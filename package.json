@@ -47,7 +47,9 @@
     "classnames": "^2.2.6",
     "dotenv": "6.2.0",
     "eslint": "6.8.0",
+    "husky": "^4.2.5",
     "jest": "25.2.3",
+    "lint-staged": "^10.2.2",
     "nxpm": "^1.0.3",
     "prettier": "1.19.1",
     "react": "^16.8.4",
@@ -56,5 +58,16 @@
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
     "typescript": "~3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,scss,less,md,ts,html,component.html,graphql}": [
+      "yarn affected:lint --uncommitted --fix --parallel",
+      "yarn format --uncommitted"
+    ]
   }
 }
