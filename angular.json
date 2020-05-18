@@ -70,7 +70,7 @@
                 "output": "./lib/"
               },
               {
-                "glob": "**/*.*__tmpl__",
+                "glob": "**/files/{*,.*}",
                 "input": "libs/schematics/src/lib",
                 "output": "./lib/"
               }
