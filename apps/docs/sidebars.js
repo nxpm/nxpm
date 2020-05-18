@@ -1,6 +1,6 @@
 module.exports = {
   someSidebar: {
-    Introduction: ['cli/getting-started', 'cli/installation', 'cli/usage'],
+    Introduction: ['getting-started', 'installation', 'usage'],
     Commands: ['commands/plugins', 'commands/projects', 'commands/registry', 'commands/release'],
     Schematics: ['schematics/schematics-library'],
     Guides: ['guides/releasing-packages'],

@@ -15,7 +15,7 @@ module.exports = {
       },
       links: [
         {
-          to: 'docs/cli/getting-started',
+          to: 'docs/getting-started',
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
@@ -43,7 +43,7 @@ module.exports = {
           items: [
             {
               label: 'Getting Started',
-              to: 'docs/cli/getting-started',
+              to: 'docs/getting-started',
             },
             {
               label: 'Releasing Packages',
