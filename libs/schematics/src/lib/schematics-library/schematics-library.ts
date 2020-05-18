@@ -117,6 +117,17 @@ function removeExportFromBarrelFile(options: NormalizedSchema): Rule {
   }
 }
 
+function deleteFilesFast(paths: string | string[]): Rule {
+  paths = Array.isArray(paths) ? paths : [paths];
+  return (tree: Tree) => {
+    for (const path of paths) {
+      if (tree.exists(path)) {
+        tree.delete(path);
+      }
+    }
+  };
+}
+
 export default function(schema: Schema): Rule {
   return (host: Tree) => {
     const options = normalizeOptions(host, schema)
@@ -130,8 +141,10 @@ export default function(schema: Schema): Rule {
       addAssets(options),
       updatePackageJson(options),
       removeExportFromBarrelFile(options),
-      deleteFile(`/${options.projectRoot}/src/lib/${options.fileName}.spec.ts`),
-      deleteFile(`/${options.projectRoot}/src/lib/${options.fileName}.ts`),
+      deleteFilesFast([
+        `/${options.projectRoot}/src/lib/${options.fileName}.spec.ts`,
+        `/${options.projectRoot}/src/lib/${options.fileName}.ts`,
+      ]),
     ])
   }
 }
