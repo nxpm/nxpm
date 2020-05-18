@@ -2,4 +2,5 @@
 
 /dist
 /coverage
-.docusaurus/
+/tmp
+apps/api/src/schema.graphql

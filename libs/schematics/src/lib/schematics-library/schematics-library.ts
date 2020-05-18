@@ -60,7 +60,7 @@ function createFiles(options: NormalizedSchema): Rule {
 }
 
 function addAssets(options: NormalizedSchema): Rule {
-  return updateWorkspaceInTree(json => {
+  return updateWorkspaceInTree((json) => {
     const architect = json.projects[options.name]?.architect
     if (architect) {
       architect.build = {
@@ -88,7 +88,7 @@ function addAssets(options: NormalizedSchema): Rule {
 }
 
 function updatePackageJson(options: NormalizedSchema) {
-  return updateJsonInTree(`${options.projectRoot}/package.json`, json => {
+  return updateJsonInTree(`${options.projectRoot}/package.json`, (json) => {
     if (!json['dependencies']) {
       json['dependencies'] = {}
     }
@@ -118,14 +118,14 @@ function removeExportFromBarrelFile(options: NormalizedSchema): Rule {
 }
 
 function deleteFilesFast(paths: string | string[]): Rule {
-  paths = Array.isArray(paths) ? paths : [paths];
+  paths = Array.isArray(paths) ? paths : [paths]
   return (tree: Tree) => {
     for (const path of paths) {
       if (tree.exists(path)) {
-        tree.delete(path);
+        tree.delete(path)
       }
     }
-  };
+  }
 }
 
 export default function(schema: Schema): Rule {

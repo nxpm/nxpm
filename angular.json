@@ -43,10 +43,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/schematics/tsconfig.lib.json",
-              "libs/schematics/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/schematics/tsconfig.lib.json", "libs/schematics/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/schematics/**"]
           }
         },
