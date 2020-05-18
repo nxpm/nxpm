@@ -1,6 +1,6 @@
 {
   "name": "nxpm",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "license": "MIT",
   "scripts": {
     "ng": "nx",
@@ -61,7 +61,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "true "
     }
   },
   "lint-staged": {
