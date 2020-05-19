@@ -17,10 +17,9 @@
     "url": "https://github.com/nxpm/nxpm.git"
   },
   "dependencies": {
-    "@angular-devkit/core": "^9.1.0",
-    "@angular-devkit/schematics": "^9.1.0",
-    "@nrwl/node": "^9.2.4",
-    "typescript": "~3.8.2"
+    "@angular-devkit/core": "^9.1.6",
+    "@angular-devkit/schematics": "^9.1.6",
+    "@nrwl/node": "^9.3.0"
   },
   "devDependencies": {}
 }

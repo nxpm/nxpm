@@ -1,15 +1,15 @@
 {
   "name": "nxpm",
-  "version": "1.0.2",
+  "version": "1.7.3",
   "license": "MIT",
   "scripts": {
     "ng": "nx",
     "nx": "nx",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "nx workspace-lint && ng lint",
-    "e2e": "ng e2e",
+    "start": "nx serve",
+    "build": "yarn nx run-many --target build --all",
+    "test": "nx test",
+    "lint": "nx workspace-lint && nx lint",
+    "e2e": "nx e2e",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
@@ -21,7 +21,7 @@
     "format": "nx format:write",
     "format:write": "nx format:write",
     "format:check": "nx format:check",
-    "update": "ng update @nrwl/workspace",
+    "update": "nx update @nrwl/workspace",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
@@ -30,21 +30,23 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
-    "@angular/cli": "9.1.0",
+    "@angular/cli": "^9.1.6",
     "@docusaurus/core": "^2.0.0-alpha.50",
-    "@docusaurus/plugin-google-analytics": "^2.0.0-alpha.37",
     "@docusaurus/preset-classic": "^2.0.0-alpha.50",
-    "@nrwl/jest": "9.2.4",
-    "@nrwl/node": "^9.2.4",
-    "@nrwl/nx-cloud": "^9.2.1",
-    "@nrwl/workspace": "9.2.4",
+    "@nrwl/jest": "^9.3.0",
+    "@nrwl/cli": "^9.3.0",
+    "@nrwl/nx-cloud": "^9.2.2",
+    "@nrwl/workspace": "9.3.0",
     "@nx-plus/docusaurus": "^0.0.4",
+    "@nxpm/schematics": "^1.0.2",
     "@types/jest": "25.1.4",
     "@types/node": "~8.9.4",
     "classnames": "^2.2.6",
     "dotenv": "6.2.0",
     "eslint": "6.8.0",
+    "husky": "^4.2.5",
     "jest": "25.2.3",
+    "lint-staged": "^10.2.2",
     "nxpm": "^1.0.3",
     "prettier": "1.19.1",
     "react": "^16.8.4",
@@ -53,5 +55,16 @@
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
     "typescript": "~3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "true "
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,scss,less,md,ts,html,component.html,graphql}": [
+      "yarn affected:lint --uncommitted --fix --parallel",
+      "yarn format --uncommitted"
+    ]
   }
 }

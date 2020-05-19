@@ -1,7 +1,7 @@
 module.exports = {
   title: 'nxpm',
   tagline: 'A toolkit for Nx Workspace',
-  url: 'https://nxpm.github.io',
+  url: 'https://nxpm.dev',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'nxpm', // Usually your GitHub org/user name.
@@ -15,7 +15,7 @@ module.exports = {
       },
       links: [
         {
-          to: 'docs/cli/getting-started',
+          to: 'docs/getting-started',
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
@@ -43,7 +43,7 @@ module.exports = {
           items: [
             {
               label: 'Getting Started',
-              to: 'docs/cli/getting-started',
+              to: 'docs/getting-started',
             },
             {
               label: 'Releasing Packages',
@@ -99,4 +99,4 @@ module.exports = {
       },
     ],
   ],
-};
+}

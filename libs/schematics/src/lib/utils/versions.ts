@@ -1,3 +1,5 @@
 export const angularVersion = '^9.1.0'
-export const nxVersion = '9.2.4'
+export const huskyVersion = '4.2.5'
+export const lintStagedVersion = '10.2.2'
+export const nxVersion = '9.3.0'
 export const typescriptVersion = '~3.8.3'

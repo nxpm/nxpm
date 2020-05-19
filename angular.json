@@ -23,6 +23,9 @@
           "options": {
             "commands": [
               {
+                "command": "yarn nx build docs"
+              },
+              {
                 "command": "cd dist/docs && git init && git add . && git commit -m 'feat: publish site' && git remote add origin git@github.com:nxpm/nxpm.github.io.git && git push --set-upstream origin master --force"
               }
             ],
@@ -40,14 +43,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/schematics/tsconfig.lib.json",
-              "libs/schematics/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/schematics/**"
-            ]
+            "tsConfig": ["libs/schematics/tsconfig.lib.json", "libs/schematics/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/schematics/**"]
           }
         },
         "test": {
@@ -74,6 +71,11 @@
               },
               {
                 "glob": "**/*.*__tmpl__",
+                "input": "libs/schematics/src/lib",
+                "output": "./lib/"
+              },
+              {
+                "glob": "**/files/{*,.*}",
                 "input": "libs/schematics/src/lib",
                 "output": "./lib/"
               }

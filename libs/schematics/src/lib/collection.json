@@ -1,6 +1,11 @@
 {
   "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
+    "lint-staged": {
+      "description": "Configure lint-staged, husky and prettier",
+      "factory": "./lint-staged/lint-staged",
+      "schema": "./lint-staged/schema.json"
+    },
     "schematics-library": {
       "description": "Create a library to publish schematics",
       "factory": "./schematics-library/schematics-library",
