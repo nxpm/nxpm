@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@nxpm/schematics": ["libs/schematics/src/index.ts"],
-      "@nxpm/nest": ["libs/nest/src/index.ts"]
+      "@nxpm/nest": ["libs/nest/src/index.ts"],
+      "@nxpm/react-native": ["libs/react-native/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

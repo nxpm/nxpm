@@ -32,6 +32,13 @@
     "nest-e2e": {
       "tags": [],
       "implicitDependencies": ["nest"]
+    },
+    "react-native": {
+      "tags": []
+    },
+    "react-native-e2e": {
+      "tags": [],
+      "implicitDependencies": ["react-native"]
     }
   }
 }

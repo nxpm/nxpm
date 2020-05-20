@@ -152,6 +152,78 @@
           }
         }
       }
+    },
+    "react-native": {
+      "root": "libs/react-native",
+      "sourceRoot": "libs/react-native/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/react-native/.eslintrc",
+            "tsConfig": [
+              "libs/react-native/tsconfig.lib.json",
+              "libs/react-native/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/react-native/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/react-native/jest.config.js",
+            "tsConfig": "libs/react-native/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/react-native",
+            "tsConfig": "libs/react-native/tsconfig.lib.json",
+            "packageJson": "libs/react-native/package.json",
+            "main": "libs/react-native/src/index.ts",
+            "assets": [
+              "libs/react-native/*.md",
+              {
+                "input": "./libs/react-native/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/react-native",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/react-native",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "react-native-e2e": {
+      "projectType": "application",
+      "root": "apps/react-native-e2e",
+      "sourceRoot": "apps/react-native-e2e/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "react-native:build",
+            "npmPackageName": "@nxpm/react-native",
+            "pluginOutputPath": "dist/libs/react-native",
+            "jestConfig": "apps/react-native-e2e/jest.config.js",
+            "tsSpecConfig": "apps/react-native-e2e/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {

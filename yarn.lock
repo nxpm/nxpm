@@ -1533,7 +1533,7 @@
   dependencies:
     "@angular-devkit/architect" "~0.901.0"
 
-"@nrwl/node@^9.2.4":
+"@nrwl/node@9.3.0", "@nrwl/node@^9.2.4":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@nrwl/node/-/node-9.3.0.tgz#9670d671f4cebf3708e84f35e6cb0ccebcb4cee3"
   integrity sha512-Qv1rDTum8wio/n55yKts1tPnZnbemitk3tMYP3kfplW9g362zns24Z5MgDF9bKXEBHuvEGotaAIFX5Vg6GiL8Q==
@@ -1564,6 +1564,22 @@
   dependencies:
     axios "^0.19.0"
     tar "5.0.5"
+
+"@nrwl/nx-plugin@^9.3.0":
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/nx-plugin/-/nx-plugin-9.3.0.tgz#099f0d78a643f4afce39c75d94f8287849132fec"
+  integrity sha512-4CcwVIllt1QMmSvTOiH0kegBd9IPvPzdBsKKRj5pi3JMvm4qerw2RhK9inoHASyWE2ORutqdofIE1f7m1Nxtlg==
+  dependencies:
+    "@angular-devkit/architect" "~0.901.0"
+    "@angular-devkit/core" "~9.1.0"
+    "@angular-devkit/schematics" "~9.1.0"
+    "@nrwl/linter" "9.3.0"
+    "@nrwl/node" "9.3.0"
+    fs-extra "7.0.1"
+    inquirer "^6.3.1"
+    tmp "0.0.33"
+    yargs "^11.0.0"
+    yargs-parser "10.0.0"
 
 "@nrwl/tao@9.3.0":
   version "9.3.0"
@@ -5850,7 +5866,7 @@ fs-extra@6.0.0:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
-fs-extra@^7.0.0, fs-extra@^7.0.1:
+fs-extra@7.0.1, fs-extra@^7.0.0, fs-extra@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
   integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
