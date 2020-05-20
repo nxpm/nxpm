@@ -1,6 +1,7 @@
 import { apply, applyTemplates, chain, mergeWith, move, Rule, url } from '@angular-devkit/schematics'
 import {
-  addProjectToNxJsonInTree,
+  addDepsToPackageJson,
+  addProjectToNxJsonInTree, formatFiles,
   names,
   offsetFromRoot,
   projectRootDir,
@@ -20,6 +21,25 @@ interface NormalizedSchema extends ReactNativeSchematicSchema {
   projectRoot: string
   projectDirectory: string
   parsedTags: string[]
+}
+
+const pages = {
+  "name": "Sandbox",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+
+  }
 }
 
 function normalizeOptions(options: ReactNativeSchematicSchema): NormalizedSchema {
@@ -68,6 +88,22 @@ export default function(options: ReactNativeSchematicSchema): Rule {
         })
     }),
     addProjectToNxJsonInTree(normalizedOptions.projectName, { tags: normalizedOptions.parsedTags }),
-    addFiles(normalizedOptions)
+    addFiles(normalizedOptions),
+    addDepsToPackageJson(
+      {
+        "react": "16.11.0",
+        "react-native": "0.62.2",
+      },
+      {
+        "@babel/core": "^7.6.2",
+        "@babel/runtime": "^7.6.2",
+        "@types/react-native": "^0.62.0",
+        "@types/react-test-renderer": "16.9.2",
+        "metro-react-native-babel-preset": "^0.58.0",
+        "react-test-renderer": "16.11.0",
+      },
+      true
+    ),
+    formatFiles(options)
   ])
 }

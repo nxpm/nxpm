@@ -1,11 +1,11 @@
 {
   "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
-  "name": "react-native",
+  "name": "app",
   "version": "0.0.1",
   "schematics": {
-    "react-native": {
-      "factory": "./src/schematics/react-native/schematic",
-      "schema": "./src/schematics/react-native/schema.json",
+    "app": {
+      "factory": "./src/schematics/app/schematic",
+      "schema": "./src/schematics/app/schema.json",
       "description": "react-native schematic"
     }
   }
