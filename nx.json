@@ -25,6 +25,13 @@
     },
     "schematics": {
       "tags": []
+    },
+    "nest": {
+      "tags": []
+    },
+    "nest-e2e": {
+      "tags": [],
+      "implicitDependencies": ["nest"]
     }
   }
 }
