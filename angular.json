@@ -83,6 +83,75 @@
           }
         }
       }
+    },
+    "nest": {
+      "root": "libs/nest",
+      "sourceRoot": "libs/nest/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/nest/.eslintrc",
+            "tsConfig": ["libs/nest/tsconfig.lib.json", "libs/nest/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/nest/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/nest/jest.config.js",
+            "tsConfig": "libs/nest/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/nest",
+            "tsConfig": "libs/nest/tsconfig.lib.json",
+            "packageJson": "libs/nest/package.json",
+            "main": "libs/nest/src/index.ts",
+            "assets": [
+              "libs/nest/*.md",
+              {
+                "input": "./libs/nest/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/nest",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/nest",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "nest-e2e": {
+      "projectType": "application",
+      "root": "apps/nest-e2e",
+      "sourceRoot": "apps/nest-e2e/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "nest:build",
+            "npmPackageName": "@nxpm/nest",
+            "pluginOutputPath": "dist/libs/nest",
+            "jestConfig": "apps/nest-e2e/jest.config.js",
+            "tsSpecConfig": "apps/nest-e2e/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {

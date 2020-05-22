@@ -1,0 +1,27 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "app",
+  "version": "0.0.1",
+  "schematics": {
+    "app": {
+      "factory": "./src/schematics/app/app-schematic",
+      "schema": "./src/schematics/app/schema.json",
+      "description": "app schematic"
+    },
+    "lib-auth": {
+      "factory": "./src/schematics/lib-auth/auth-schematic",
+      "schema": "./src/schematics/lib-auth/schema.json",
+      "description": "auth schematic"
+    },
+    "lib-core": {
+      "factory": "./src/schematics/lib-core/core-schematic",
+      "schema": "./src/schematics/lib-core/schema.json",
+      "description": "core schematic"
+    },
+    "lib-data": {
+      "factory": "./src/schematics/lib-data/data-schematic",
+      "schema": "./src/schematics/lib-data/schema.json",
+      "description": "data schematic"
+    }
+  }
+}

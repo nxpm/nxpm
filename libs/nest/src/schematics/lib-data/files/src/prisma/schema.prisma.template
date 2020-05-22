@@ -1,0 +1,40 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:../../prisma-db.sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                    String                @default(cuid()) @id
+  created               DateTime              @default(now())
+  updated               DateTime              @updatedAt
+  developer             Boolean               @default(false)
+  role                  String                @default("User")
+  username              String                @unique
+  name                  String?
+  password              String?
+  avatarUrl             String?
+  emails                Email[]
+}
+
+// Postgres and MySQL can use enums
+//enum Role {
+//  Admin
+//  User
+//}
+
+model Email {
+  id       String   @default(cuid()) @id
+  created  DateTime @default(now())
+  updated  DateTime @updatedAt
+  email    String   @unique
+  public   Boolean  @default(false)
+  primary  Boolean  @default(false)
+  verified Boolean  @default(false)
+  owner    User     @relation(fields: [ownerId], references: [id])
+  ownerId  String
+  @@unique([ownerId, primary])
+}

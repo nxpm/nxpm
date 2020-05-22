@@ -1,0 +1,15 @@
+import { compare, hash } from 'bcryptjs'
+
+import { randomBytes } from 'crypto'
+
+export class <%= classify(projectName) %>Helper {
+  static randomToken = (size = 64) => randomBytes(size).toString('hex')
+  static formatEmail = (email = '') => email.trim().toLowerCase()
+  static validate(password: string, hashedPassword: string): Promise<boolean> {
+    return compare(password, hashedPassword)
+  }
+
+  static hash(password: string): Promise<string> {
+    return hash(password, 10)
+  }
+}

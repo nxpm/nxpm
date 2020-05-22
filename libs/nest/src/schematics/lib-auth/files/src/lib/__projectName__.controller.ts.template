@@ -1,0 +1,42 @@
+import {
+  Body,
+  Controller,
+  Get,
+  Logger,
+  Next,
+  Param,
+  Post,
+  Query,
+  Req,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+
+import { AuthLoginInput } from './dto/auth-login.input';
+import { AuthRegisterInput } from './dto/auth-register.input';
+import { User } from './models/user';
+import { <%= classify(projectName) %>Service } from './services/<%= projectName %>.service';
+
+@Controller('auth')
+export class <%= classify(projectName) %>Controller<T extends User> {
+  constructor(
+    private readonly auth: <%= classify(projectName) %>Service,
+  ) {}
+
+  @Get('me')
+  @UseGuards(AuthGuard('jwt'))
+  me(@Req() req) {
+    return this.auth.findUserById(req?.user?.id);
+  }
+
+  @Post('login')
+  login(@Body() input: AuthLoginInput) {
+    return this.auth.login(input);
+  }
+
+  @Post('register')
+  register(@Body() input: AuthRegisterInput) {
+    return this.auth.register(input);
+  }
+}
