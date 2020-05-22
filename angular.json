@@ -152,6 +152,44 @@
           }
         }
       }
+    },
+    "create-stack": {
+      "root": "libs/create-stack",
+      "sourceRoot": "libs/create-stack/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/create-stack/.eslintrc",
+            "tsConfig": [
+              "libs/create-stack/tsconfig.lib.json",
+              "libs/create-stack/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/create-stack/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/create-stack/jest.config.js",
+            "tsConfig": "libs/create-stack/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/create-stack",
+            "tsConfig": "libs/create-stack/tsconfig.lib.json",
+            "packageJson": "libs/create-stack/package.json",
+            "main": "libs/create-stack/src/index.ts",
+            "assets": ["libs/create-stack/*.md"]
+          }
+        }
+      }
     }
   },
   "cli": {

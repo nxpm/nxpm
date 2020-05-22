@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@nxpm/schematics": ["libs/schematics/src/index.ts"],
-      "@nxpm/nest": ["libs/nest/src/index.ts"]
+      "@nxpm/nest": ["libs/nest/src/index.ts"],
+      "@nxpm/create-stack": ["libs/create-stack/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
