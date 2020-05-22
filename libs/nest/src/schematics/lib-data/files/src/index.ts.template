@@ -1,1 +1,4 @@
-const variable = "<%= projectName %>";
+export * from './lib/<%= projectName %>-module'
+export * from './lib/<%= projectName %>.service'
+export * from '@prisma/client'
+

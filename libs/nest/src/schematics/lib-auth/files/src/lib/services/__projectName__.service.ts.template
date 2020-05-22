@@ -1,0 +1,74 @@
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common'
+import { JwtService } from '@nestjs/jwt'
+import { User } from '@<%= npmScope %>/api/data'
+import { omit } from 'lodash'
+import { AuthLoginInput } from '../dto/auth-login.input'
+import { AuthRegisterInput } from '../dto/auth-register.input'
+import { <%= classify(projectName) %>Helper } from '../<%= projectName %>.helper'
+import { UserToken } from '../models/user-token'
+import { <%= classify(projectName) %>DataService } from './<%= projectName %>-data.service'
+
+@Injectable()
+export class <%= classify(projectName) %>Service {
+  constructor(private readonly service: <%= classify(projectName) %>DataService, private readonly jwt: JwtService) {}
+
+  private sign(user: User): UserToken {
+    return {
+      token: this.jwt.sign({ userId: user.id }),
+      // @ts-ignore
+      user: omit(user, ['password']),
+    }
+  }
+
+  public async findUserById(userId: string) {
+    return this.service.findUserById(userId)
+  }
+
+  public async login({ username, password }: AuthLoginInput) {
+    const user = await this.service.findUserByUsername(username)
+
+    if (!user) {
+      throw new UnauthorizedException()
+    }
+
+    const passwordValid = await <%= classify(projectName) %>Helper.validate(password, user.password)
+
+    if (!passwordValid) {
+      throw new BadRequestException('Invalid password')
+    }
+
+    // Sign token and return the user
+    return this.sign(user)
+  }
+
+  public async register({ email, password, username }: AuthRegisterInput) {
+    // Call out to the validation method
+    const validUser = await this.service.validateRegistration({
+      email: <%= classify(projectName) %>Helper.formatEmail(email),
+      username,
+      password,
+    })
+
+    if (!validUser) {
+      throw new BadRequestException(`Unable to register this user`)
+    }
+
+    // Looks like we are valid, let's hash the password and call the createUser method.
+    const hashed = await <%= classify(projectName) %>Helper.hash(password)
+    const user = await this.service.createUser({
+      ...validUser,
+      password: hashed,
+    })
+
+    // Sign token and return the user
+    return this.sign(user)
+  }
+
+  public async findUserByEmail(email: string) {
+    return this.service.findUserByEmail(email)
+  }
+
+  public async createUser(input: AuthRegisterInput) {
+    return this.service.createUser(input)
+  }
+}

@@ -1,0 +1,44 @@
+import { Injectable } from '@nestjs/common'
+import { PrismaClient } from '@prisma/client'
+
+@Injectable()
+export class <%= classify(projectName) %>Service {
+  public readonly prisma: PrismaClient
+
+  constructor() {
+    this.prisma = new PrismaClient()
+  }
+
+  public async createUser({
+    username,
+    password,
+    email,
+  }: {
+    password: string
+    username: string
+    email: string
+  }) {
+    return this.prisma.user.create({
+      data: {
+        username,
+        password,
+        role: 'User',
+        emails: {
+          create: { email, primary: true },
+        },
+      },
+    })
+  }
+
+  public findUserByUsername(username: string) {
+    return this.prisma.user.findOne({ where: { username }, include: { emails: true } })
+  }
+
+  public findUserById(userId: string) {
+    return this.prisma.user.findOne({ where: { id: userId }, include: { emails: true } })
+  }
+
+  public findUserByEmail(email: string) {
+    return this.prisma.email.findOne({ where: { email } }).owner()
+  }
+}

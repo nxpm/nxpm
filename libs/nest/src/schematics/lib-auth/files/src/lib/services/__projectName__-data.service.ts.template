@@ -1,0 +1,36 @@
+import { ApiDataService } from '@<%= npmScope %>/api/data'
+import { Injectable, Logger } from '@nestjs/common'
+import { AuthRegisterInput } from '../dto/auth-register.input'
+
+@Injectable()
+export class <%= classify(projectName) %>DataService {
+  constructor(private readonly data: ApiDataService) {}
+  public async createUser(input: AuthRegisterInput) {
+    return this.data.createUser(input)
+  }
+
+  public async findUserByEmail(email: string) {
+    return this.data.findUserByEmail(email)
+  }
+
+  public async findUserById(id: string) {
+    return this.data.findUserById(id)
+  }
+
+  public async findUserByUsername(username: string) {
+    return this.data.findUserByUsername(username)
+  }
+
+  public async validateRegistration(input: AuthRegisterInput): Promise<AuthRegisterInput> {
+    const [emailExists, usernameExists] = await Promise.all([
+      this.findUserByEmail(input.email),
+      this.findUserByUsername(input.username),
+    ])
+    if (emailExists || usernameExists) {
+      Logger.log(`Email or username already exists`, 'AgentAuthService.validateRegistration')
+      return Promise.resolve(null)
+    }
+    // If we agree with the registration we return the input
+    return Promise.resolve(input)
+  }
+}

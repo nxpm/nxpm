@@ -1,0 +1,13 @@
+import { ApiAuthModule } from '@<%= npmScope %>/api/auth'
+import { ApiCoreModule } from '@<%= npmScope %>/api/core'
+import { Logger, Module } from '@nestjs/common'
+import { existsSync, writeFileSync } from 'fs'
+import { join } from 'path'
+
+@Module({
+  imports: [
+    ApiAuthModule,
+    ApiCoreModule,
+  ],
+})
+export class AppModule {}

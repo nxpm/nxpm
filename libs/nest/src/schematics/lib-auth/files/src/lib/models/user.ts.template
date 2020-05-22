@@ -1,0 +1,35 @@
+import { Field, ObjectType } from '@nestjs/graphql'
+import { Email } from './email'
+import { Role } from './role'
+
+@ObjectType()
+export class User {
+  @Field({ nullable: true })
+  id?: string
+
+  @Field({ nullable: true })
+  created?: string
+
+  @Field({ nullable: true })
+  updated?: string
+
+  @Field({ nullable: true })
+  username?: string
+
+  @Field({ nullable: true })
+  name?: string
+
+  @Field({ nullable: true })
+  avatarUrl?: string
+
+  @Field({ nullable: true })
+  developer?: boolean
+
+  @Field(() => Role, { nullable: true })
+  role?: Role
+
+  password?: string
+
+  @Field(() => [Email], { nullable: true })
+  emails?: Email[]
+}

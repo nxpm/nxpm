@@ -1,76 +1,31 @@
-import { apply, applyTemplates, chain, externalSchematic, mergeWith, move, Rule, url } from '@angular-devkit/schematics'
-import {
-  addProjectToNxJsonInTree,
-  names,
-  offsetFromRoot,
-  projectRootDir,
-  ProjectType,
-  toFileName,
-  updateWorkspace,
-} from '@nrwl/workspace'
-import { NestSchematicSchema } from './schema'
+import { chain, externalSchematic, Rule } from '@angular-devkit/schematics'
+import { addDepsToPackageJson, ProjectType } from '@nrwl/workspace'
+import { addFiles, normalizeOptions } from '../utils'
+import { createDotEnv } from '../utils/helpers/dot-env'
+import { LibCoreSchematicSchema } from './schema'
 
-/**
- * Depending on your needs, you can change this to either `Library` or `Application`
- */
-const projectType = ProjectType.Library
+export default function (options: LibCoreSchematicSchema): Rule {
+  const normalizedOptions = normalizeOptions<LibCoreSchematicSchema>(options, ProjectType.Library)
 
-interface NormalizedSchema extends NestSchematicSchema {
-  projectName: string
-  projectRoot: string
-  projectDirectory: string
-  parsedTags: string[]
-}
-
-function normalizeOptions(options: NestSchematicSchema): NormalizedSchema {
-  const name = toFileName(options.name)
-  const projectDirectory = options.directory ? `${toFileName(options.directory)}/${name}` : name
-  const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-')
-  const projectRoot = `${projectRootDir(projectType)}/${projectDirectory}`
-  const parsedTags = options.tags ? options.tags.split(',').map((s) => s.trim()) : []
-
-  return {
-    ...options,
-    projectName,
-    projectRoot,
-    projectDirectory,
-    parsedTags,
-  }
-}
-
-function addFiles(options: NormalizedSchema): Rule {
-  return mergeWith(
-    apply(url(`./files`), [
-      applyTemplates({
-        ...options,
-        ...names(options.name),
-        offsetFromRoot: offsetFromRoot(options.projectRoot),
-      }),
-      move(options.projectRoot),
-    ]),
-  )
-}
-
-export default function(options: NestSchematicSchema): Rule {
-  const normalizedOptions = normalizeOptions(options)
   return chain([
-    updateWorkspace((workspace) => {
-      workspace.projects
-        .add({
-          name: normalizedOptions.projectName,
-          root: normalizedOptions.projectRoot,
-          sourceRoot: `${normalizedOptions.projectRoot}/src`,
-          projectType,
-        })
-        .targets.add({
-          name: 'build',
-          builder: '@nxpm/nest:build',
-        })
-    }),
-    addProjectToNxJsonInTree(normalizedOptions.projectName, { tags: normalizedOptions.parsedTags }),
     externalSchematic('@nrwl/nest', 'library', {
+      directory: options.directory,
       name: options.name,
+      publishable: true,
     }),
-    // addFiles(normalizedOptions),
+    addFiles(normalizedOptions),
+    addDepsToPackageJson(
+      {
+        '@hapi/joi': '^17.1.1',
+        '@kikstart-playground/graphql-intercom': '1.4.1',
+        '@nestjs/config': '^0.4.2',
+        '@nestjs/graphql': '^7.0.0',
+        'apollo-server-express': '^2.13.0',
+        'graphql-type-json': '0.3.1',
+      },
+      {},
+      true,
+    ),
+    createDotEnv([`NODE_ENV=development`, `PORT=3000`]),
   ])
 }

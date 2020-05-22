@@ -1,5 +1,5 @@
-export interface NestSchematicSchema {
-  name: string
-  tags?: string
-  directory?: string
+import { BaseSchema } from '../utils'
+
+export interface LibDataSchematicSchema extends BaseSchema {
+  npmScope: string
 }

@@ -1,0 +1,33 @@
+import { Module } from '@nestjs/common'
+import { JwtModule } from '@nestjs/jwt'
+import { PassportModule } from '@nestjs/passport'
+import { ApiCoreModule } from '@<%= npmScope %>/api/core'
+import { ApiDataModule } from '@<%= npmScope %>/api/data'
+
+import { AUTH_JWT_SECRET } from './<%= projectName %>.constants'
+import { <%= classify(projectName) %>Controller } from './<%= projectName %>.controller'
+import { <%= classify(projectName) %>Resolver } from './resolvers/<%= projectName %>.resolver'
+import { <%= classify(projectName) %>DataService } from './services/<%= projectName %>-data.service'
+import { <%= classify(projectName) %>Service } from './services/<%= projectName %>.service'
+import { JwtStrategy } from './strategies/jwt.strategy'
+
+@Module({
+  imports: [
+    ApiCoreModule,
+    ApiDataModule,
+    PassportModule.register({
+      defaultStrategy: 'jwt',
+      session: true,
+    }),
+    JwtModule.register({ secret: AUTH_JWT_SECRET }),
+  ],
+  controllers: [<%= classify(projectName) %>Controller],
+  exports: [<%= classify(projectName) %>Service],
+  providers: [
+    <%= classify(projectName) %>Resolver,
+    <%= classify(projectName) %>Service,
+    <%= classify(projectName) %>DataService,
+    JwtStrategy,
+  ],
+})
+export class <%= classify(projectName) %>Module {}

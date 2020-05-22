@@ -1,0 +1,42 @@
+import { UseGuards } from '@nestjs/common'
+import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
+
+import { CtxUser } from '../decorators/ctx-user.decorator'
+import { AuthLoginInput } from '../dto/auth-login.input'
+import { AuthRegisterInput } from '../dto/auth-register.input'
+import { GqlAuthGuard } from '../guards/gql-auth-guard'
+import { User } from '../models/user'
+import { UserToken } from '../models/user-token'
+
+import { <%= classify(projectName) %>Service } from '../services/<%= projectName %>.service'
+
+@Resolver(() => User)
+export class <%= classify(projectName) %>Resolver {
+  constructor(private readonly service: <%= classify(projectName) %>Service) {}
+
+  @Query(() => User)
+  @UseGuards(GqlAuthGuard)
+  async me(@CtxUser() user: User): Promise<User> {
+    return user
+  }
+
+  @Mutation(() => UserToken, { nullable: true })
+  login(@Args('input') input: AuthLoginInput) {
+    return this.service.login(input)
+  }
+
+  @Mutation(() => UserToken, { nullable: true })
+  register(@Args('input') input: AuthRegisterInput) {
+    return this.service.register(input)
+  }
+
+  @ResolveField(() => String, { nullable: true })
+  email(@Parent() user: User) {
+    return user.emails?.find((email) => email.primary)?.email
+  }
+
+  @ResolveField(() => String, { nullable: true })
+  avatarUrl(@Parent() user: User) {
+    return user.avatarUrl || `https://api.adorable.io/avatars/400/${user.username}.png`
+  }
+}

@@ -3,11 +3,11 @@ import { SchematicTestRunner } from '@angular-devkit/schematics/testing'
 import { createEmptyWorkspace } from '@nrwl/workspace/testing'
 import { join } from 'path'
 
-import { NestSchematicSchema } from './schema'
+import { AppSchematicSchema } from './schema'
 
 describe('nest schematic', () => {
   let appTree: Tree
-  const options: NestSchematicSchema = { name: 'test' }
+  const options: AppSchematicSchema = { name: 'test' }
 
   const testRunner = new SchematicTestRunner(
     '@nxpm/nest',
