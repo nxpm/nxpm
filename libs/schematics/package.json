@@ -1,6 +1,6 @@
 {
   "name": "@nxpm/schematics",
-  "version": "0.0.0-development",
+  "version": "1.8.1",
   "license": "MIT",
   "schematics": "./lib/collection.json",
   "author": {
