@@ -83,6 +83,21 @@ function Home() {
               Get Started
             </Link>
           </div>
+          <div className={{ ...styles.buttons, flex: 'column' }}>
+            <div style={{ padding: '20px' }}>Looking for the full-stack generator?</div>
+            <div>
+              <Link
+                className={classnames(
+                  'button button--outline button--secondary button--lg',
+                  styles.getStarted,
+                )}
+                to={'https://github.com/nxpm/stack'}
+              >
+                {' '}
+                Check github.com/nxpm/stack
+              </Link>
+            </div>
+          </div>
         </div>
       </header>
       <main>
