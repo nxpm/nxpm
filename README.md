@@ -1,5 +1,9 @@
 # nxpm
 
+## Looking for the full-stack generator?
+
+### ➡️ Check here [github.com/nxpm/stack](https://github.com/nxpm/stack)
+
 <p align="center"><img src="https://avatars0.githubusercontent.com/u/65322676?s=400&u=4a36f7a4110a16d674cba9610dae5d5e2966ab3a&v=4"></p>
 
 <p align="center">Monorepo for [nxpm](https://github.com/nxpm/nxpm-cli) docs and tools.</p>
